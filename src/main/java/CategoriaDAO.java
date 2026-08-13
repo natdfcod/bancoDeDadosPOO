@@ -2,6 +2,8 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class CategoriaDAO {
     private Connection connection;
@@ -23,16 +25,22 @@ public class CategoriaDAO {
         }
     }
 
-    public void listar() {
+    public List<Categoria> listar() {
         sql = "SELECT * FROM java_categoria";
+        List<Categoria> lista = new ArrayList<>();
         try {
             ps = connection.prepareStatement(sql);
             rs = ps.executeQuery();
             while (rs.next()) {
-                System.out.printf("ID: %d | Categoria: %s \n",rs.getInt("ID"), rs.getString("categoria"));
+                Categoria linha = new Categoria();
+                linha.setId(rs.getInt("ID"));
+                linha.setCategoria(rs.getString("categoria"));
+                lista.add(linha);
+
             }
         }catch (SQLException e) {
             System.out.println(e.getMessage());
         }
+        return lista;
     }
 }
