@@ -1,11 +1,11 @@
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-
+    
 public class Conexao {
     private final String url = "jdbc:oracle:thin:@oracle.fiap.com.br:1521:ORCL";
-    private final String user = "rm561579";
-    private final String password = "100507";
+    private final String user = System.getenv("user");
+    private final String password = System.getenv("password");
 
     public Connection conectar() {
         try{
