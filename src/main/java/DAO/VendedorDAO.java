@@ -5,7 +5,9 @@ import Model.Vendedor;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
@@ -15,17 +17,24 @@ public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
         String sql = "insert into java_vendedor(nome) values(?)";
 
         try(Connection connection = ConnectionFactory.obterConexao();
-            PreparedStatement ps = connection.prepareStatement(sql)){
+        PreparedStatement ps = connection.prepareStatement(sql)){
             ps.setString(1, entidade.getNome());
             ps.execute();
         } catch (SQLException e) {
-
+            System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
         }
     }
 
     @Override
     public List<Vendedor> listar() {
-
-        return
+        String sql = "select * from java_vendedor";
+        List<Vendedor> listaVendedor = new ArrayList<>();
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery();
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar Vendedor" + e.getMessage());
+        }
+        return  listaVendedor;
     }
 }

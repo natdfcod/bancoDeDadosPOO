@@ -25,8 +25,7 @@ public final class ConnectionFactory {
         Properties props = new Properties();
         try (InputStream in = ConnectionFactory.class.getClassLoader().getResourceAsStream("database.properties")) {
             if (in == null) {
-                throw new IllegalStateException(
-                        "Arquivo não encontrado.");
+                throw new IllegalStateException("Arquivo não encontrado.");
             }
             props.load(in);
             return props;
