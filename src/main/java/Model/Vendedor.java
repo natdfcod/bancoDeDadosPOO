@@ -4,6 +4,11 @@ public class Vendedor {
     private Integer id;
     private String nome;
 
+    @Override
+    public String toString() {
+        return id +" | " + nome;
+    }
+
     public Integer getId() {
         return id;
     }

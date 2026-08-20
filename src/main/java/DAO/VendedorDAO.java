@@ -32,6 +32,12 @@ public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
         try(Connection connection = ConnectionFactory.obterConexao();
             PreparedStatement ps = connection.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Vendedor vendedor = new Vendedor();
+                vendedor.setId(rs.getInt("id"));
+                vendedor.setNome(rs.getString("nome"));
+                listaVendedor.add(vendedor);
+            }
         } catch (SQLException e) {
             System.out.println("Erro ao listar Vendedor" + e.getMessage());
         }

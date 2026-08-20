@@ -3,6 +3,8 @@ package view;
 import DAO.VendedorDAO;
 import Model.Vendedor;
 
+import java.util.List;
+
 import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
 import static javax.swing.JOptionPane.showInputDialog;
 
@@ -20,6 +22,8 @@ public class MenuVendedor {
     }
 
     private void listar() {
+        VendedorDAO vendedorDAO = new VendedorDAO();
+        List<Vendedor> lista = vendedorDAO.listar();
 
     }
 
