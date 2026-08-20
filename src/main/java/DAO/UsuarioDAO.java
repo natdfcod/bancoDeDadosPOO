@@ -10,7 +10,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
+public class UsuarioDAO implements GenericDAO<Vendedor, Integer> {
 
     @Override
     public void inserir(Vendedor entidade) {
