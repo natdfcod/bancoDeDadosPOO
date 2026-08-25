@@ -7,8 +7,12 @@ public class MenuPrincipal {
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU PRINCIPAL ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
-                case "vendedor" -> new MenuVendedor().menu();
-                case "venda" -> new MenuVenda().menu();
+                case "vendedor":
+                    new MenuVendedor().menu();
+                    break;
+                case "venda":
+                    new MenuVenda().menu();
+                    break;
             }
         } while(!opcao.toLowerCase().equals("finalizar"));
     }

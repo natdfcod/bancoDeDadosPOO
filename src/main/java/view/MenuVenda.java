@@ -15,8 +15,12 @@ public class MenuVenda {
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU VENDA ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
-                case "inserir" -> inserir();
-                case "listar" -> listar();
+                case "inserir":
+                    inserir();
+                    break;
+                case "listar":
+                    listar();
+                    break;
             }
         } while(!opcao.toLowerCase().equals("sair"));
     }

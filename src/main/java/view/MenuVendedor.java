@@ -5,8 +5,7 @@ import Model.Vendedor;
 
 import java.util.List;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showInputDialog;
+import static javax.swing.JOptionPane.*;
 
 public class MenuVendedor {
     public void menu() {
@@ -15,15 +14,23 @@ public class MenuVendedor {
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU VENDEDOR ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
-                case "inserir" -> inserir();
-                case "listar" -> listar();
+                case "inserir":
+                    inserir();
+                    break;
+                case "listar":
+                    listar();
+                    break;
             }
         } while(!opcao.toLowerCase().equals("sair"));
     }
 
     private void listar() {
-        VendedorDAO vendedorDAO = new VendedorDAO();
-        List<Vendedor> lista = vendedorDAO.listar();
+        List<Vendedor> lista = new VendedorDAO().listar();
+        String aux = "";
+        for (Vendedor vendedor : lista){
+            aux += "|id =  "+vendedor.getId()+" | nome = "+vendedor.getNome()+"|\n";
+        }
+        showMessageDialog(null, aux);
 
     }
 
