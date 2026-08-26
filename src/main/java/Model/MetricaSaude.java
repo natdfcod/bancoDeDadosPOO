@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class MetricaSaude{
     private int idMetrica;
-    private int idUsuario;
+    private Usuario usuario;
     private int batimentosBpm;
     private int pressaoSistolica;
     private int pressaoDiastolica;
@@ -18,14 +18,6 @@ public class MetricaSaude{
 
     public void setIdMetrica(int idMetrica) {
         this.idMetrica = idMetrica;
-    }
-
-    public int getIdUsuario() {
-        return idUsuario;
-    }
-
-    public void setIdUsuario(int idUsuario) {
-        this.idUsuario = idUsuario;
     }
 
     public int getBatimentosBpm() {
@@ -74,5 +66,13 @@ public class MetricaSaude{
 
     public void setDataHoraRegistro(LocalDateTime dataHoraRegistro) {
         this.dataHoraRegistro = dataHoraRegistro;
+    }
+
+    public Usuario getUsuario() {
+        return usuario;
+    }
+
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 }

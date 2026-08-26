@@ -1,40 +1,54 @@
 package DAO;
 
 import Factory.ConnectionFactory;
-import Model.Vendedor;
+import Model.Agendamento;
+import Model.LembreteMedicamento;
+import Model.Usuario;
 
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LembreteMedicamentoDAO implements GenericDAO<Vendedor, Integer> {
+public class LembreteMedicamentoDAO implements GenericDAO<LembreteMedicamento, Integer> {
 
     @Override
-    public void inserir(Vendedor entidade) {
-        String sql = "insert into java_lembrete_medicamento(nome) values(?)";
+    public void inserir(LembreteMedicamento entidade) {
+        String sql = "insert into java_lembrete_medicamento(ID_USUARIO, NOME_REMEDIO, DOSAGEM, HORARIO_TOMAR, STATUS_TOMOU) values(?,?,?,?,?)";
 
         try(Connection connection = ConnectionFactory.obterConexao();
         PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setString(1, entidade.getNome());
+            ps.setInt(1, entidade.getUsuario().getIdUsuario());
+            ps.setString(2, entidade.getNomeRemedio());
+            ps.setString(3, entidade.getDosagem());
+            ps.setTimestamp(4, Timestamp.valueOf(entidade.getDosagem()));
+            ps.setString(5, entidade.getStatusTomou());
             ps.execute();
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
+            System.out.println("Erro ao inserir lembrete: " + e.getMessage());
         }
     }
 
     @Override
-    public List<Vendedor> listar() {
-        String sql = "select * from java_vendedor";
-        List<Vendedor> listaVendedor = new ArrayList<>();
+    public List<LembreteMedicamento> listar() {
+        String sql = "select * from java_LEMBRETE_MEDICAMENTO";
+        List<LembreteMedicamento> listaLembrete = new ArrayList<>();
         try(Connection connection = ConnectionFactory.obterConexao();
             PreparedStatement ps = connection.prepareStatement(sql)){
             ResultSet rs = ps.executeQuery();
+            while (rs.next()) {
+                LembreteMedicamento lembreteMedicamento = new LembreteMedicamento();
+                Usuario usuario = new Usuario();
+                lembreteMedicamento.setIdLembrete(rs.getInt("ID_LEMBRETE"));
+                usuario.setIdUsuario(rs.getInt("ID_USUARIO"));
+                lembreteMedicamento.setUsuario(usuario);
+                lembreteMedicamento.setDosagem(rs.getString("DOSAGEM"));
+                lembreteMedicamento.setHorarioTomar(rs.getTimestamp("HORARIO_TOMAR").toLocalDateTime());
+                lembreteMedicamento.setStatusTomou(rs.getString("STATUS_TOMOU"));
+                listaLembrete.add(lembreteMedicamento);
+            }
         } catch (SQLException e) {
-            System.out.println("Erro ao listar Vendedor" + e.getMessage());
+            System.out.println("Erro ao listar de lembretes" + e.getMessage());
         }
-        return  listaVendedor;
+        return  listaLembrete;
     }
 }

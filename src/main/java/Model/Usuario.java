@@ -10,6 +10,18 @@ public class Usuario{
     private String email;
     private String senha;
 
+
+    @Override
+    public String toString() {
+        return
+                "idUsuario=" + idUsuario +
+                ", nome='" + nome + '\'' +
+                ", dataNascimento=" + dataNascimento +
+                ", numeroCarteirinha='" + numeroCarteirinha + '\'' +
+                ", email='" + email + '\'' +
+                ", senha='" + senha + '\n' ;
+    }
+
     public int getIdUsuario() {
         return idUsuario;
     }

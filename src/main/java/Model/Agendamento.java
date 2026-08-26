@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 
 public class Agendamento{
     private int id_agendamento;
-    private int id_usuario;
+    private Usuario usuario;
     private String tipo;
     private String medicoEspecialidade;
     private LocalDateTime dataHoraAgendada;
@@ -17,12 +17,12 @@ public class Agendamento{
         this.id_agendamento = id_agendamento;
     }
 
-    public int getId_usuario() {
-        return id_usuario;
+    public Usuario getUsuario() {
+        return usuario;
     }
 
-    public void setId_usuario(int id_usuario) {
-        this.id_usuario = id_usuario;
+    public void setUsuario(Usuario usuario) {
+        this.usuario = usuario;
     }
 
     public String getTipo() {
