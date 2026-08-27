@@ -13,12 +13,12 @@ import java.util.List;
 public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
 
     @Override
-    public void inserir(Vendedor entidade) {
+    public void inserir(Vendedor vendedor) {
         String sql = "insert into java_vendedor(nome) values(?)";
 
         try(Connection connection = ConnectionFactory.obterConexao();
         PreparedStatement ps = connection.prepareStatement(sql)){
-            ps.setString(1, entidade.getNome());
+            ps.setString(1, vendedor.getNome());
             ps.execute();
         } catch (SQLException e) {
             System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
@@ -42,5 +42,29 @@ public class VendedorDAO implements GenericDAO<Vendedor, Integer> {
             System.out.println("Erro ao listar Vendedor" + e.getMessage());
         }
         return  listaVendedor;
+    }
+
+    public void atualizar(Vendedor vendedor){
+        String sql = "update java_vendedor set nome = ? where id = ?";
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setString(1, vendedor.getNome());
+            ps.setInt(2, vendedor.getId());
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
+        }
+
+    }
+
+    public  void deletar(Integer id){
+        String sql = "delete from java_vendedor where id = ?";
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
+        }
     }
 }

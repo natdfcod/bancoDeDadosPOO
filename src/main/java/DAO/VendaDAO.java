@@ -21,7 +21,7 @@ public class VendaDAO implements GenericDAO<Venda, Integer> {
             ps.setDate(3, Date.valueOf(entidade.getData()));
             ps.execute();
         } catch (SQLException e) {
-            System.out.println("Erro ao inserir Vendedor: " + e.getMessage());
+            System.out.println("Erro ao inserir Venda: " + e.getMessage());
         }
     }
 
@@ -45,8 +45,34 @@ public class VendaDAO implements GenericDAO<Venda, Integer> {
                 listaVenda.add(venda);
             }
         } catch (SQLException e) {
-            System.out.println("Erro ao listar Vendedor" + e.getMessage());
+            System.out.println("Erro ao listar Venda" + e.getMessage());
         }
         return listaVenda;
+    }
+
+    public List<Venda> relatorio(){
+        List<Venda> lista = new ArrayList<>();
+        String sql = "select v.nome, vd.total, vd.data from java_vendedor v "+
+        "inner join java_venda vd " +
+        "on v.id = vd.id_vendedor " +
+        "order by v.nome asc" ;
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            ResultSet rs = ps.executeQuery();
+            while (rs.next()){
+                Venda venda = new Venda();
+                Vendedor vendedor = new Vendedor();
+
+                vendedor.setNome(rs.getString("nome"));
+                venda.setTotal(rs.getDouble("total"));
+                venda.setData(rs.getDate("data").toLocalDate());
+
+                venda.setVendedor(vendedor);
+                lista.add(venda);
+            }
+        } catch (SQLException e) {
+            System.out.println("Erro ao listar Venda" + e.getMessage());
+        }
+        return lista;
     }
 }

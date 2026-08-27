@@ -7,6 +7,7 @@ import Model.Vendedor;
 
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
+import java.util.ArrayList;
 import java.util.List;
 
 import static java.lang.Double.parseDouble;
@@ -14,7 +15,7 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuVenda {
     public void menu(){
-        String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Excluir", "Sair"};
+        String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Relatório", "Excluir", "Sair"};
         String opcao;
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU VENDA ***", INFORMATION_MESSAGE, null, item, item[0]));
@@ -25,8 +26,20 @@ public class MenuVenda {
                 case "listar":
                     listar();
                     break;
+                case "relatório":
+                    relatorio();
+                    break;
             }
         } while(!opcao.toLowerCase().equals("sair"));
+    }
+
+    private void relatorio() {
+        List<Venda> lista = new VendaDAO().relatorio();
+        String aux = "";
+        for (Venda venda : lista){
+            aux += "|Nome = "+ venda.getVendedor().getNome()+" | Total = "+ venda.getTotal()+" | Data = "+venda.getData()+" |\n";
+        }
+        showMessageDialog(null, aux);
     }
 
     private void listar() {
