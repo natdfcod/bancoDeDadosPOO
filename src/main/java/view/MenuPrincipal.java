@@ -13,9 +13,9 @@ public class MenuPrincipal {
                 case "agendamento":
                     new MenuAgendamento().menu();
                     break;
-//                case "lembrete":
-//                    new MenuLembrete().menu();
-//                    break;
+                case "lembrete":
+                    new MenuLembrete().menu();
+                    break;
 //                case "metrica":
 //                    new MenuMetrica().menu();
 //                    break;

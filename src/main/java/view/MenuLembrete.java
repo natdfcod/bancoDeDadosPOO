@@ -1,20 +1,20 @@
 package view;
 
 import DAO.AgendamentoDAO;
+import DAO.LembreteMedicamentoDAO;
 import DAO.UsuarioDAO;
 import Model.Agendamento;
+import Model.LembreteMedicamento;
 import Model.Usuario;
 
-
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static java.lang.Double.parseDouble;
-import static javax.swing.JOptionPane.*;
+import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
+import static javax.swing.JOptionPane.showInputDialog;
 
-public class MenuAgendamento {
+public class MenuLembrete {
     public void menu(){
         String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Excluir", "Sair"};
         String opcao;
@@ -31,27 +31,19 @@ public class MenuAgendamento {
         } while(!opcao.toLowerCase().equals("sair"));
     }
 
-    private void listar() {
-        List<Agendamento> lista = new AgendamentoDAO().listar();
-        String aux = "";
-        for (Agendamento agendamento : lista){
-            aux += agendamento;
-        }
-        showMessageDialog(null, aux);
-    }
-
     private void inserir() {
-        Agendamento agendamento = new Agendamento();
         Usuario usuario;
+        LembreteMedicamento lembrete = new LembreteMedicamento();
         List<Usuario> lista = new UsuarioDAO().listar();
         DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
         usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
-        agendamento.setUsuario(usuario);
-        agendamento.setDataHoraAgendada(LocalDateTime.parse(showInputDialog(null, "Data e hora agendada (dd/mm/aaaa-hh:mm)"), mascara));
-        agendamento.setTipo(showInputDialog(null, "Tipo"));
-        agendamento.setMedico_especialidade(showInputDialog(null, "MEDICO_ESPECIALIDADE"));
+        lembrete.setUsuario(usuario);
+        lembrete.setNomeRemedio(showInputDialog(null, "NOME_REMEDIO"));
+        lembrete.setTipo(showInputDialog(null, "Tipo"));
+        lembrete.setMedico_especialidade(showInputDialog(null, "MEDICO_ESPECIALIDADE"));
 
-        new AgendamentoDAO().inserir(agendamento);
+        new LembreteMedicamentoDAO().inserir(lembrete);
 
     }
+
 }
