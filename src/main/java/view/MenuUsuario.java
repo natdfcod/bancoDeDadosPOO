@@ -11,7 +11,7 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuUsuario {
     public void menu() {
-        String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Excluir", "Sair"};
+        String[] item = {"Inserir", "Listar", "Sair"};
         String opcao;
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, item, item[0]));

@@ -8,8 +8,18 @@ public class LembreteMedicamento{
     private Usuario usuario;
     private String nomeRemedio;
     private String dosagem;
-    private LocalDateTime horarioTomar;
+    private String horarioTomar;
     private String statusTomou;
+
+    @Override
+    public String toString() {
+        return "| idLembrete=" + idLembrete +
+                " | usuario=" + usuario +
+                " | nomeRemedio=" + nomeRemedio +
+                " | dosagem=" + dosagem +
+                " | horarioTomar=" + horarioTomar +
+                " | statusTomou=" + statusTomou + " |\n";
+    }
 
     public int getIdLembrete() {
         return idLembrete;
@@ -43,11 +53,11 @@ public class LembreteMedicamento{
         this.dosagem = dosagem;
     }
 
-    public LocalDateTime getHorarioTomar() {
+    public String getHorarioTomar() {
         return horarioTomar;
     }
 
-    public void setHorarioTomar(LocalDateTime horarioTomar) {
+    public void setHorarioTomar(String horarioTomar) {
         this.horarioTomar = horarioTomar;
     }
 

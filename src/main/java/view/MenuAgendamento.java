@@ -16,7 +16,7 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuAgendamento {
     public void menu(){
-        String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Excluir", "Sair"};
+        String[] item = {"Inserir", "Listar", "Sair"};
         String opcao;
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));

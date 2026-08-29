@@ -11,12 +11,11 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
-import static javax.swing.JOptionPane.INFORMATION_MESSAGE;
-import static javax.swing.JOptionPane.showInputDialog;
+import static javax.swing.JOptionPane.*;
 
 public class MenuLembrete {
     public void menu(){
-        String[] item = {"Inserir", "Pesquisar", "Listar", "Atualizar", "Excluir", "Sair"};
+        String[] item = {"Inserir", "Listar", "Sair"};
         String opcao;
         do {
             opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));
@@ -31,16 +30,25 @@ public class MenuLembrete {
         } while(!opcao.toLowerCase().equals("sair"));
     }
 
+    private void listar() {
+        List<LembreteMedicamento> lista = new LembreteMedicamentoDAO().listar();
+        String aux = "";
+        for (LembreteMedicamento lembrete : lista){
+            aux += lembrete;
+        }
+        showMessageDialog(null, aux);
+    }
+
     private void inserir() {
         Usuario usuario;
         LembreteMedicamento lembrete = new LembreteMedicamento();
         List<Usuario> lista = new UsuarioDAO().listar();
-        DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
         usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
         lembrete.setUsuario(usuario);
         lembrete.setNomeRemedio(showInputDialog(null, "NOME_REMEDIO"));
-        lembrete.setTipo(showInputDialog(null, "Tipo"));
-        lembrete.setMedico_especialidade(showInputDialog(null, "MEDICO_ESPECIALIDADE"));
+        lembrete.setDosagem(showInputDialog(null, "DOSAGEM"));
+        lembrete.setHorarioTomar(showInputDialog(null, "HORARIO_TOMAR"));
+        lembrete.setDosagem(showInputDialog(null, "STATUS_TOMOU(S/N)"));
 
         new LembreteMedicamentoDAO().inserir(lembrete);
 

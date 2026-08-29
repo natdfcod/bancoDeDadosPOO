@@ -9,6 +9,15 @@ public class Agendamento{
     private String medicoEspecialidade;
     private LocalDateTime dataHoraAgendada;
 
+    @Override
+    public String toString() {
+        return "| id_agendamento=" + id_agendamento +
+                " | usuario=" + usuario +
+                " | tipo=" + tipo +
+                " | medicoEspecialidade=" + medicoEspecialidade +
+                " | dataHoraAgendada=" + dataHoraAgendada + " |\n";
+    }
+
     public int getId_agendamento() {
         return id_agendamento;
     }

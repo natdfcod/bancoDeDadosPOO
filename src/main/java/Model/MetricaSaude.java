@@ -12,6 +12,18 @@ public class MetricaSaude{
     private double caloriasGastas;
     private LocalDateTime dataHoraRegistro;
 
+    @Override
+    public String toString() {
+        return "| idMetrica=" + idMetrica +
+                " | usuario=" + usuario +
+                " | batimentosBpm=" + batimentosBpm +
+                " | pressaoSistolica=" + pressaoSistolica +
+                " | pressaoDiastolica=" + pressaoDiastolica +
+                " | qtdPassos=" + qtdPassos +
+                " | caloriasGastas=" + caloriasGastas +
+                " | dataHoraRegistro=" + dataHoraRegistro + " |\n";
+    }
+
     public int getIdMetrica() {
         return idMetrica;
     }
