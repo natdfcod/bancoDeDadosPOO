@@ -12,7 +12,7 @@ public class Agendamento{
     @Override
     public String toString() {
         return "| id_agendamento=" + id_agendamento +
-                " | usuario=" + usuario +
+                " | id_usuario=" + usuario.getIdUsuario() +
                 " | tipo=" + tipo +
                 " | medicoEspecialidade=" + medicoEspecialidade +
                 " | dataHoraAgendada=" + dataHoraAgendada + " |\n";

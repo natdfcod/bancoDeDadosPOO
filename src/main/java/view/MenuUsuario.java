@@ -11,10 +11,10 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuUsuario {
     public void menu() {
-        String[] item = {"Inserir", "Listar", "Sair"};
+        String[] item = {"Inserir", "Listar", "Atualizar", "Deletar", "Voltar"};
         String opcao;
         do {
-            opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, item, item[0]));
+            opcao = (String) (showInputDialog(null, "Selecione uma opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
                 case "inserir":
                     inserir();
@@ -23,7 +23,7 @@ public class MenuUsuario {
                     listar();
                     break;
             }
-        } while(!opcao.toLowerCase().equals("sair"));
+        } while(!opcao.toLowerCase().equals("voltar"));
     }
 
     private void listar() {
@@ -40,7 +40,7 @@ public class MenuUsuario {
         Usuario usuario = new Usuario();
         DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         usuario.setNome(showInputDialog("Nome"));
-        usuario.setDataNascimento(LocalDate.parse(showInputDialog("DATA_NASCIMENTO"), mascara));
+        usuario.setDataNascimento(LocalDate.parse(showInputDialog("DATA_NASCIMENTO (dd/mm/aaaa"), mascara));
         usuario.setNumeroCarteirinha(showInputDialog("NUMERO_CARTEIRINHA"));
         usuario.setEmail(showInputDialog("EMAIL"));
         usuario.setSenha(showInputDialog("SENHA"));

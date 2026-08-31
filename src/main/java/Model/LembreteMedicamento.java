@@ -14,7 +14,7 @@ public class LembreteMedicamento{
     @Override
     public String toString() {
         return "| idLembrete=" + idLembrete +
-                " | usuario=" + usuario +
+                " | id_usuario=" + usuario.getIdUsuario() +
                 " | nomeRemedio=" + nomeRemedio +
                 " | dosagem=" + dosagem +
                 " | horarioTomar=" + horarioTomar +

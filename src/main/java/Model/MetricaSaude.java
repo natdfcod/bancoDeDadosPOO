@@ -15,7 +15,7 @@ public class MetricaSaude{
     @Override
     public String toString() {
         return "| idMetrica=" + idMetrica +
-                " | usuario=" + usuario +
+                " | id_usuario=" + usuario.getIdUsuario() +
                 " | batimentosBpm=" + batimentosBpm +
                 " | pressaoSistolica=" + pressaoSistolica +
                 " | pressaoDiastolica=" + pressaoDiastolica +

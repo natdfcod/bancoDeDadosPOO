@@ -16,10 +16,10 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuAgendamento {
     public void menu(){
-        String[] item = {"Inserir", "Listar", "Sair"};
+        String[] item = {"Inserir", "Listar", "Voltar"};
         String opcao;
         do {
-            opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));
+            opcao = (String) (showInputDialog(null, "Selecione uma opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
                 case "inserir":
                     inserir();
@@ -28,7 +28,7 @@ public class MenuAgendamento {
                     listar();
                     break;
             }
-        } while(!opcao.toLowerCase().equals("sair"));
+        } while(!opcao.toLowerCase().equals("voltar"));
     }
 
     private void listar() {
@@ -42,12 +42,15 @@ public class MenuAgendamento {
 
     private void inserir() {
         Agendamento agendamento = new Agendamento();
-        Usuario usuario;
+        DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+
+        //Pegando e pedindo usuario para relacionar com o agendamento
         List<Usuario> lista = new UsuarioDAO().listar();
-        DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy-HH:mm");
-        usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
+        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
         agendamento.setUsuario(usuario);
-        agendamento.setDataHoraAgendada(LocalDateTime.parse(showInputDialog(null, "Data e hora agendada (dd/mm/aaaa-hh:mm)"), mascara));
+
+        //Pedindo os dados do agendamento
+        agendamento.setDataHoraAgendada(LocalDateTime.parse(showInputDialog(null, "Data e hora agendada (dd/mm/aaaa hh:mm)"), mascara));
         agendamento.setTipo(showInputDialog(null, "Tipo"));
         agendamento.setMedico_especialidade(showInputDialog(null, "MEDICO_ESPECIALIDADE"));
 

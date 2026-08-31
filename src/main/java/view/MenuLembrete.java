@@ -15,10 +15,10 @@ import static javax.swing.JOptionPane.*;
 
 public class MenuLembrete {
     public void menu(){
-        String[] item = {"Inserir", "Listar", "Sair"};
+        String[] item = {"Inserir", "Listar", "Voltar"};
         String opcao;
         do {
-            opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));
+            opcao = (String) (showInputDialog(null, "Selecione uma opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
                 case "inserir":
                     inserir();
@@ -27,7 +27,7 @@ public class MenuLembrete {
                     listar();
                     break;
             }
-        } while(!opcao.toLowerCase().equals("sair"));
+        } while(!opcao.toLowerCase().equals("voltar"));
     }
 
     private void listar() {
@@ -40,11 +40,14 @@ public class MenuLembrete {
     }
 
     private void inserir() {
-        Usuario usuario;
         LembreteMedicamento lembrete = new LembreteMedicamento();
+
+        //Pegando e pedindo usuario para relacionar com o lembrete
         List<Usuario> lista = new UsuarioDAO().listar();
-        usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
+        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
         lembrete.setUsuario(usuario);
+
+        //Pedindo os dados do lembrete
         lembrete.setNomeRemedio(showInputDialog(null, "NOME_REMEDIO"));
         lembrete.setDosagem(showInputDialog(null, "DOSAGEM"));
         lembrete.setHorarioTomar(showInputDialog(null, "HORARIO_TOMAR"));

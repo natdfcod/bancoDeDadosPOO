@@ -2,10 +2,10 @@ package view;
 import static javax.swing.JOptionPane.*;
 public class MenuPrincipal {
     public static void menu() {
-        String[] item = {"Usuario", "Agendamento", "Lembrete", "Metrica",  "Finalizar"};
+        String[] item = {"Usuario", "Agendamento", "Lembrete", "Metrica Saúde",  "Finalizar"};
         String opcao;
         do {
-            opcao = (String) (showInputDialog(null, "Selecione uam opção", "*** MENU PRINCIPAL ***", INFORMATION_MESSAGE, null, item, item[0]));
+            opcao = (String) (showInputDialog(null, "Selecione uma opção", "*** MENU PRINCIPAL ***", INFORMATION_MESSAGE, null, item, item[0]));
             switch (opcao.toLowerCase()){
                 case "usuario":
                     new MenuUsuario().menu();
@@ -16,9 +16,9 @@ public class MenuPrincipal {
                 case "lembrete":
                     new MenuLembrete().menu();
                     break;
-//                case "metrica":
-//                    new MenuMetrica().menu();
-//                    break;
+                case "metrica saúde":
+                    new MenuMetricaSaude().menu();
+                    break;
             }
         } while(!opcao.toLowerCase().equals("finalizar"));
     }
