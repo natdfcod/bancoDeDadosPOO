@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class MetricaSaude{
     private int idMetrica;
@@ -12,16 +13,18 @@ public class MetricaSaude{
     private double caloriasGastas;
     private LocalDateTime dataHoraRegistro;
 
+
     @Override
     public String toString() {
-        return "| idMetrica=" + idMetrica +
-                " | id_usuario=" + usuario.getIdUsuario() +
-                " | batimentosBpm=" + batimentosBpm +
-                " | pressaoSistolica=" + pressaoSistolica +
-                " | pressaoDiastolica=" + pressaoDiastolica +
-                " | qtdPassos=" + qtdPassos +
-                " | caloriasGastas=" + caloriasGastas +
-                " | dataHoraRegistro=" + dataHoraRegistro + " |\n";
+    DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return "| idMetrica: " + idMetrica +
+                " | id_usuario: " + usuario.getIdUsuario() +
+                " | batimentosBpm: " + batimentosBpm +
+                " | pressaoSistolica: " + pressaoSistolica +
+                " | pressaoDiastolica: " + pressaoDiastolica +
+                " | qtdPassos: " + qtdPassos +
+                " | caloriasGastas: " + caloriasGastas +
+                " | dataHoraRegistro: " + dataHoraRegistro.format(mascara) + " |\n";
     }
 
     public int getIdMetrica() {

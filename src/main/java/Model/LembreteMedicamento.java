@@ -13,12 +13,12 @@ public class LembreteMedicamento{
 
     @Override
     public String toString() {
-        return "| idLembrete=" + idLembrete +
-                " | id_usuario=" + usuario.getIdUsuario() +
-                " | nomeRemedio=" + nomeRemedio +
-                " | dosagem=" + dosagem +
-                " | horarioTomar=" + horarioTomar +
-                " | statusTomou=" + statusTomou + " |\n";
+        return "| idLembrete: " + idLembrete +
+                " | id_usuario: " + usuario.getIdUsuario() +
+                " | nomeRemedio: " + nomeRemedio +
+                " | dosagem: " + dosagem +
+                " | horarioTomar: " + horarioTomar +
+                " | statusTomou: " + statusTomou + " |\n";
     }
 
     public int getIdLembrete() {

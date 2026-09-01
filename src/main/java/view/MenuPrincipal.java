@@ -6,20 +6,25 @@ public class MenuPrincipal {
         String opcao;
         do {
             opcao = (String) (showInputDialog(null, "Selecione uma opção", "*** MENU PRINCIPAL ***", INFORMATION_MESSAGE, null, item, item[0]));
-            switch (opcao.toLowerCase()){
-                case "usuario":
-                    new MenuUsuario().menu();
-                    break;
-                case "agendamento":
-                    new MenuAgendamento().menu();
-                    break;
-                case "lembrete":
-                    new MenuLembrete().menu();
-                    break;
-                case "metrica saúde":
-                    new MenuMetricaSaude().menu();
-                    break;
+            try{
+                switch (opcao.toLowerCase()){
+                    case "usuario":
+                        new MenuUsuario().menu();
+                        break;
+                    case "agendamento":
+                        new MenuAgendamento().menu();
+                        break;
+                    case "lembrete":
+                        new MenuLembrete().menu();
+                        break;
+                    case "metrica saúde":
+                        new MenuMetricaSaude().menu();
+                        break;
+                }
+            } catch (NullPointerException e) {
+                opcao = "Finalizar";
             }
+
         } while(!opcao.toLowerCase().equals("finalizar"));
     }
 }

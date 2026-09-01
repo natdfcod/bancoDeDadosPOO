@@ -1,6 +1,7 @@
 package Model;
 
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 
 public class Agendamento{
     private int id_agendamento;
@@ -11,11 +12,12 @@ public class Agendamento{
 
     @Override
     public String toString() {
-        return "| id_agendamento=" + id_agendamento +
-                " | id_usuario=" + usuario.getIdUsuario() +
-                " | tipo=" + tipo +
-                " | medicoEspecialidade=" + medicoEspecialidade +
-                " | dataHoraAgendada=" + dataHoraAgendada + " |\n";
+        DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        return "| id_agendamento: " + id_agendamento +
+                " | id_usuario: " + usuario.getIdUsuario() +
+                " | tipo: " + tipo +
+                " | medicoEspecialidade: " + medicoEspecialidade +
+                " | dataHoraAgendada: " + dataHoraAgendada.format(mascara) + " |\n";
     }
 
     public int getId_agendamento() {

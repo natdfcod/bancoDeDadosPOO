@@ -1,14 +1,17 @@
 package DAO;
 
 import Factory.ConnectionFactory;
-import Model.LembreteMedicamento;
 import Model.Usuario;
 
 import java.sql.*;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
 
 public class UsuarioDAO implements GenericDAO<Usuario, Integer> {
+
+    DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy");
 
     @Override
     public void inserir(Usuario entidade) {
@@ -49,4 +52,22 @@ public class UsuarioDAO implements GenericDAO<Usuario, Integer> {
         }
         return  listaUsuarios;
     }
+
+    public void atualizar(Usuario usuario, String coluna, String valor) {
+        String sql = "update java_usuario set " + coluna + " = ? where id_usuario = ?";
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            if(coluna.equals("DATA_NASCIMENTO")) {
+                ps.setDate(1, Date.valueOf(LocalDate.parse(valor, mascara)));
+            } else {
+                ps.setString(1, valor);
+            }
+            ps.setInt(2, usuario.getIdUsuario());
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro ao alterar usuario: " + e.getMessage());
+        }
+
+    }
+
 }

@@ -51,7 +51,7 @@ public class MenuMetricaSaude {
 
         //Pedindo os dados da metrica
         metricaSaude.setBatimentosBpm(parseInt(showInputDialog(null, "BATIMENTOS_BPM")));
-        metricaSaude.setPressaoSistolica(parseInt(showInputDialog(null, "DOSAGEM")));
+        metricaSaude.setPressaoSistolica(parseInt(showInputDialog(null, "PRESSAO_SISTOLICA")));
         metricaSaude.setPressaoDiastolica(parseInt(showInputDialog(null, "PRESSAO_DIASTOLICA")));
         metricaSaude.setQtdPassos(parseInt(showInputDialog(null, "QTD_PASSOS")));
         metricaSaude.setCaloriasGastas(parseDouble(showInputDialog(null, "CALORIAS_GASTAS")));

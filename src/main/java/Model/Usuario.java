@@ -13,12 +13,12 @@ public class Usuario{
 
     @Override
     public String toString() {
-        return "| idUsuario=" + idUsuario +
-                " | nome=" + nome +
-                " | dataNascimento=" + dataNascimento +
-                " | numeroCarteirinha=" + numeroCarteirinha +
-                " | email=" + email +
-                " | senha=" + senha + " |\n";
+        return "| idUsuario: " + idUsuario +
+                " | nome: " + nome +
+                " | dataNascimento: " + dataNascimento +
+                " | numeroCarteirinha: " + numeroCarteirinha +
+                " | email: " + email +
+                " | senha: " + senha + " |\n";
     }
 
     public int getIdUsuario() {
