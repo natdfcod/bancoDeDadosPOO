@@ -38,6 +38,7 @@ public class AgendamentoDAO implements GenericDAO<Agendamento, Integer> {
             while (rs.next()) {
                 Agendamento agendamento = new Agendamento();
                 Usuario usuario = new Usuario();
+                agendamento.setId_agendamento(rs.getInt("id_agendamento"));
                 usuario.setIdUsuario(rs.getInt("id_usuario"));
                 agendamento.setUsuario(usuario);
                 agendamento.setTipo(rs.getString("tipo"));

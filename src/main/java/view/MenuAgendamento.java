@@ -43,15 +43,17 @@ public class MenuAgendamento {
     private void inserir() {
         Agendamento agendamento = new Agendamento();
         DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy HH:mm");
+        String[] tipos = {"Consulta", "Exame"};
 
         //Pegando e pedindo usuario para relacionar com o agendamento
         List<Usuario> lista = new UsuarioDAO().listar();
-        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
+        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uma opção", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
         agendamento.setUsuario(usuario);
 
         //Pedindo os dados do agendamento
         agendamento.setDataHoraAgendada(LocalDateTime.parse(showInputDialog(null, "Data e hora agendada (dd/mm/aaaa hh:mm)"), mascara));
-        agendamento.setTipo(showInputDialog(null, "Tipo"));
+        //Deixando o tipo para selecionar
+        agendamento.setTipo((String) showInputDialog(null, "Selecione o tipo do agendamento", "*** MENU AGENDAMENTO ***", INFORMATION_MESSAGE, null, tipos, tipos[0]));
         agendamento.setMedico_especialidade(showInputDialog(null, "MEDICO_ESPECIALIDADE"));
 
         new AgendamentoDAO().inserir(agendamento);

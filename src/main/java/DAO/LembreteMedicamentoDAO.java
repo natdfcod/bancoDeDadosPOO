@@ -21,7 +21,7 @@ public class LembreteMedicamentoDAO implements GenericDAO<LembreteMedicamento, I
             ps.setString(2, entidade.getNomeRemedio());
             ps.setString(3, entidade.getDosagem());
             ps.setString(4, entidade.getDosagem());
-            ps.setString(5, entidade.getStatusTomou());
+            ps.setString(5, String.valueOf(entidade.getStatusTomou()));
             ps.execute();
         } catch (SQLException e) {
             System.out.println("Erro ao inserir lembrete: " + e.getMessage());
@@ -41,9 +41,10 @@ public class LembreteMedicamentoDAO implements GenericDAO<LembreteMedicamento, I
                 lembreteMedicamento.setIdLembrete(rs.getInt("ID_LEMBRETE"));
                 usuario.setIdUsuario(rs.getInt("ID_USUARIO"));
                 lembreteMedicamento.setUsuario(usuario);
+                lembreteMedicamento.setNomeRemedio(rs.getString("NOME_REMEDIO"));
                 lembreteMedicamento.setDosagem(rs.getString("DOSAGEM"));
                 lembreteMedicamento.setHorarioTomar(rs.getString("HORARIO_TOMAR"));
-                lembreteMedicamento.setStatusTomou(rs.getString("STATUS_TOMOU"));
+                lembreteMedicamento.setStatusTomou(rs.getString("STATUS_TOMOU").charAt(0));
                 listaLembrete.add(lembreteMedicamento);
             }
         } catch (SQLException e) {

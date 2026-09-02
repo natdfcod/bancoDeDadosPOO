@@ -7,6 +7,7 @@ import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+import static java.lang.Long.parseLong;
 import static javax.swing.JOptionPane.*;
 
 public class MenuUsuario {
@@ -39,7 +40,7 @@ public class MenuUsuario {
         String opcao;
 
         List<Usuario> lista = new UsuarioDAO().listar();
-        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uam opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
+        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uma opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
 
         String[] item = {"NOME", "DATA_NASCIMENTO", "NUMERO_CARTEIRINHA", "EMAIL", "SENHA"};
         opcao = (String) (showInputDialog(null, "Selecione a coluna que deseja modificar", "*** MENU ATUALIZAR USUARIO ***", INFORMATION_MESSAGE, null, item, item[0]));
@@ -49,7 +50,7 @@ public class MenuUsuario {
 
             mensagem = "DATA_NASCIMENTO (dd/mm/aaaa)";
         } else {
-            mensagem = "Insira o dado";
+            mensagem = "Digite o valor que deseja inserir";
         }
         String valor = showInputDialog(mensagem);
         new UsuarioDAO().atualizar(usuario,  opcao, valor);
@@ -71,8 +72,8 @@ public class MenuUsuario {
         DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         Usuario usuario = new Usuario();
         usuario.setNome(showInputDialog("Nome"));
-        usuario.setDataNascimento(LocalDate.parse(showInputDialog("DATA_NASCIMENTO (dd/mm/aaaa"), mascara));
-        usuario.setNumeroCarteirinha(showInputDialog("NUMERO_CARTEIRINHA"));
+        usuario.setDataNascimento(LocalDate.parse(showInputDialog("DATA_NASCIMENTO (dd/mm/aaaa)"), mascara));
+        usuario.setNumeroCarteirinha(parseLong(showInputDialog("NUMERO_CARTEIRINHA")));
         usuario.setEmail(showInputDialog("EMAIL"));
         usuario.setSenha(showInputDialog("SENHA"));
         new UsuarioDAO().inserir(usuario);

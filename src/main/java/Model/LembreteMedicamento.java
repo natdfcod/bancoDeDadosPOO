@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 import java.time.LocalTime;
 
 public class LembreteMedicamento{
-    private int idLembrete;
+    private Integer idLembrete;
     private Usuario usuario;
     private String nomeRemedio;
     private String dosagem;
     private String horarioTomar;
-    private String statusTomou;
+    private char statusTomou;
 
     @Override
     public String toString() {
@@ -21,11 +21,11 @@ public class LembreteMedicamento{
                 " | statusTomou: " + statusTomou + " |\n";
     }
 
-    public int getIdLembrete() {
+    public Integer getIdLembrete() {
         return idLembrete;
     }
 
-    public void setIdLembrete(int idLembrete) {
+    public void setIdLembrete(Integer idLembrete) {
         this.idLembrete = idLembrete;
     }
 
@@ -61,11 +61,11 @@ public class LembreteMedicamento{
         this.horarioTomar = horarioTomar;
     }
 
-    public String getStatusTomou() {
+    public char getStatusTomou() {
         return statusTomou;
     }
 
-    public void setStatusTomou(String statusTomou) {
+    public void setStatusTomou(char statusTomou) {
         this.statusTomou = statusTomou;
     }
 }

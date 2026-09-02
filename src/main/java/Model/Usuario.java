@@ -1,31 +1,34 @@
 package Model;
 
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 
 public class Usuario{
-    private int idUsuario;
+
+    private Integer idUsuario;
     private String nome;
     private LocalDate dataNascimento;
-    private String numeroCarteirinha;
+    private Long numeroCarteirinha;
     private String email;
     private String senha;
 
 
     @Override
     public String toString() {
+        DateTimeFormatter mascara = DateTimeFormatter.ofPattern("dd/MM/yyyy");
         return "| idUsuario: " + idUsuario +
                 " | nome: " + nome +
-                " | dataNascimento: " + dataNascimento +
+                " | dataNascimento: " + dataNascimento.format(mascara) +
                 " | numeroCarteirinha: " + numeroCarteirinha +
                 " | email: " + email +
                 " | senha: " + senha + " |\n";
     }
 
-    public int getIdUsuario() {
+    public Integer getIdUsuario() {
         return idUsuario;
     }
 
-    public void setIdUsuario(int idUsuario) {
+    public void setIdUsuario(Integer idUsuario) {
         this.idUsuario = idUsuario;
     }
 
@@ -45,11 +48,11 @@ public class Usuario{
         this.dataNascimento = dataNascimento;
     }
 
-    public String getNumeroCarteirinha() {
+    public Long getNumeroCarteirinha() {
         return numeroCarteirinha;
     }
 
-    public void setNumeroCarteirinha(String numeroCarteirinha) {
+    public void setNumeroCarteirinha(Long numeroCarteirinha) {
         this.numeroCarteirinha = numeroCarteirinha;
     }
 

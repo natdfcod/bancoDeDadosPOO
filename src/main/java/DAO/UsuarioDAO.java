@@ -21,7 +21,7 @@ public class UsuarioDAO implements GenericDAO<Usuario, Integer> {
         PreparedStatement ps = connection.prepareStatement(sql)){
             ps.setString(1, entidade.getNome());
             ps.setDate(2, Date.valueOf(entidade.getDataNascimento()));
-            ps.setString(3, entidade.getNumeroCarteirinha());
+            ps.setLong(3, entidade.getNumeroCarteirinha());
             ps.setString(4, entidade.getEmail());
             ps.setString(5, entidade.getSenha());
             ps.execute();
@@ -42,7 +42,7 @@ public class UsuarioDAO implements GenericDAO<Usuario, Integer> {
                 usuario.setIdUsuario(rs.getInt("ID_USUARIO"));
                 usuario.setNome(rs.getString("NOME"));
                 usuario.setDataNascimento(rs.getDate("DATA_NASCIMENTO").toLocalDate());
-                usuario.setNumeroCarteirinha(rs.getString("NUMERO_CARTEIRINHA"));
+                usuario.setNumeroCarteirinha(rs.getLong("NUMERO_CARTEIRINHA"));
                 usuario.setEmail(rs.getString("EMAIL"));
                 usuario.setSenha(rs.getString("SENHA"));
                 listaUsuarios.add(usuario);

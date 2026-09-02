@@ -4,7 +4,7 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class Agendamento{
-    private int id_agendamento;
+    private Integer id_agendamento;
     private Usuario usuario;
     private String tipo;
     private String medicoEspecialidade;
@@ -20,11 +20,11 @@ public class Agendamento{
                 " | dataHoraAgendada: " + dataHoraAgendada.format(mascara) + " |\n";
     }
 
-    public int getId_agendamento() {
+    public Integer getId_agendamento() {
         return id_agendamento;
     }
 
-    public void setId_agendamento(int id_agendamento) {
+    public void setId_agendamento(Integer id_agendamento) {
         this.id_agendamento = id_agendamento;
     }
 

@@ -4,12 +4,12 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
 public class MetricaSaude{
-    private int idMetrica;
+    private Integer idMetrica;
     private Usuario usuario;
-    private int batimentosBpm;
-    private int pressaoSistolica;
-    private int pressaoDiastolica;
-    private int qtdPassos;
+    private Integer batimentosBpm;
+    private Integer pressaoSistolica;
+    private Integer pressaoDiastolica;
+    private Integer qtdPassos;
     private double caloriasGastas;
     private LocalDateTime dataHoraRegistro;
 
@@ -27,43 +27,43 @@ public class MetricaSaude{
                 " | dataHoraRegistro: " + dataHoraRegistro.format(mascara) + " |\n";
     }
 
-    public int getIdMetrica() {
+    public Integer getIdMetrica() {
         return idMetrica;
     }
 
-    public void setIdMetrica(int idMetrica) {
+    public void setIdMetrica(Integer idMetrica) {
         this.idMetrica = idMetrica;
     }
 
-    public int getBatimentosBpm() {
+    public Integer getBatimentosBpm() {
         return batimentosBpm;
     }
 
-    public void setBatimentosBpm(int batimentosBpm) {
+    public void setBatimentosBpm(Integer batimentosBpm) {
         this.batimentosBpm = batimentosBpm;
     }
 
-    public int getPressaoSistolica() {
+    public Integer getPressaoSistolica() {
         return pressaoSistolica;
     }
 
-    public void setPressaoSistolica(int pressaoSistolica) {
+    public void setPressaoSistolica(Integer pressaoSistolica) {
         this.pressaoSistolica = pressaoSistolica;
     }
 
-    public int getPressaoDiastolica() {
+    public Integer getPressaoDiastolica() {
         return pressaoDiastolica;
     }
 
-    public void setPressaoDiastolica(int pressaoDiastolica) {
+    public void setPressaoDiastolica(Integer pressaoDiastolica) {
         this.pressaoDiastolica = pressaoDiastolica;
     }
 
-    public int getQtdPassos() {
+    public Integer getQtdPassos() {
         return qtdPassos;
     }
 
-    public void setQtdPassos(int qtdPassos) {
+    public void setQtdPassos(Integer qtdPassos) {
         this.qtdPassos = qtdPassos;
     }
 
