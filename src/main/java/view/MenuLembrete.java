@@ -49,7 +49,7 @@ public class MenuLembrete {
         //Pedindo os dados do lembrete
         lembrete.setNomeRemedio(showInputDialog(null, "NOME_REMEDIO"));
         lembrete.setDosagem(showInputDialog(null, "DOSAGEM(quantidade/por perído) ex: 1/dia"));
-        lembrete.setHorarioTomar(showInputDialog(null, "HORARIO_TOMAR (hh:mm"));
+        lembrete.setHorarioTomar(showInputDialog(null, "HORARIO_TOMAR (hh:mm)"));
         lembrete.setStatusTomou(showInputDialog(null, "Já tomou hoje? (S/N)").toUpperCase().charAt(0));
 
         new LembreteMedicamentoDAO().inserir(lembrete);

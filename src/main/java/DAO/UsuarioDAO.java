@@ -70,4 +70,15 @@ public class UsuarioDAO implements GenericDAO<Usuario, Integer> {
 
     }
 
+    public  void deletar(Integer id){
+        String sql = "delete from java_usuario where id_usuario = ?";
+        try(Connection connection = ConnectionFactory.obterConexao();
+            PreparedStatement ps = connection.prepareStatement(sql)){
+            ps.setInt(1, id);
+            ps.execute();
+        } catch (SQLException e) {
+            System.out.println("Erro ao deletar usuario: " + e.getMessage());
+        }
+    }
+
 }

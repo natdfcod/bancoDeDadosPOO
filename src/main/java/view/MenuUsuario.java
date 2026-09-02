@@ -34,6 +34,10 @@ public class MenuUsuario {
     }
 
     private void deletar() {
+        List<Usuario> lista = new UsuarioDAO().listar();
+        Usuario usuario = (Usuario) showInputDialog(null, "Selecione uma opção", "*** MENU USUARIO ***", INFORMATION_MESSAGE, null, lista.toArray(), lista.get(0));
+
+        new UsuarioDAO().deletar(usuario.getIdUsuario());
     }
 
     private void atualizar() {
